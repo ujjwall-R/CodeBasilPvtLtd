@@ -1,4 +1,5 @@
 import axios from "axios";
+const baseUrl = process.env.baseURL || "http://localhost:5000";
 
 export const signUpAction = async (email, password, name, codechefId) => {
   try {
@@ -11,7 +12,7 @@ export const signUpAction = async (email, password, name, codechefId) => {
     // console.log(email, password);
 
     const { data } = await axios.post(
-      "http://localhost:5000/users",
+      "/users",
       {
         email: email,
         name: name,
@@ -41,7 +42,7 @@ export const loginAction = async (email, password) => {
     // console.log(email, password);
 
     const { data } = await axios.post(
-      "http://localhost:5000/users/login",
+      "/users/login",
       { email, password },
       config
     );
@@ -66,7 +67,7 @@ export const getUserData = async (token) => {
     };
 
     // console.log("hitting...");
-    const { data } = await axios.get("http://localhost:5000/users/me", config);
+    const { data } = await axios.get("/users/me", config);
     // console.log("Hit");
 
     if (!data) {
@@ -90,7 +91,7 @@ export const logoutAction = async (token) => {
 
     // console.log("hitting...");
     const { data } = await axios.post(
-      "http://localhost:5000/users/logout",
+      "/users/logout",
       null,
       config
     );
@@ -118,7 +119,7 @@ export const searchUserAction = async (emailTBS) => {
     // console.log(jsonBody);
     // console.log("hitting...");
     const { data } = await axios.post(
-      "http://localhost:5000/users/search",
+      "/users/search",
       jsonBody
      ,
       config
@@ -139,7 +140,7 @@ export const searchAllUserAction = async () => {
   try {
     // console.log("hitting...");
     const { data } = await axios.get(
-      "http://localhost:5000/users/searchAll"
+      "/users/searchAll"
     );
     // console.log("Hit");
 
