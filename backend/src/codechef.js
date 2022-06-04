@@ -8,6 +8,7 @@ const getRawData = async (un) => {
       '--disable-setuid-sandbox',
     ],
   });
+  //done
   const page = await browser.newPage();
 
   await page.goto(`https://www.codechef.com/users/${un}`, {
