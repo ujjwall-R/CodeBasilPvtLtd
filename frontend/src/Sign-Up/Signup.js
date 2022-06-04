@@ -155,13 +155,13 @@ const Signup = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(
-      emailState.valueEmail,
-      passwordState.valuePassword,
-      confirmPasswordState.valueConfirmPassword,
-      name,
-      codechefId
-    );
+    // console.log(
+    //   emailState.valueEmail,
+    //   passwordState.valuePassword,
+    //   confirmPasswordState.valueConfirmPassword,
+    //   name,
+    //   codechefId
+    // );
     props.onSubmit(
       emailState.valueEmail,
       passwordState.valuePassword,
@@ -235,6 +235,7 @@ const Signup = (props) => {
               }
             >
               <input
+                type="password"
                 placeholder="Create a password of atleast 6 letters/digits."
                 onChange={passwordChangeHandler}
                 onBlur={passwordValidator}
@@ -268,6 +269,7 @@ const Signup = (props) => {
               }
             >
               <input
+                type="password"
                 placeholder="Confirm password."
                 onChange={confirmPassword}
                 onBlur={confirmPasswordValidator}
@@ -301,12 +303,12 @@ const Signup = (props) => {
             ></input>
           </div>
           <div className="mt-4 mb-4">
-            <label className="mb-2 mt-3">HackerRank User Id</label>
+            <label className="mb-2 mt-3">HackerRank User Id [Currently the support is unavailable][Optional]</label>
             <br />
             <input placeholder="HackerRank user id."></input>
           </div>
           <div className="mt-4 mb-4">
-            <label className="mb-2 mt-3">Codeforces User Id</label>
+            <label className="mb-2 mt-3">Codeforces User Id [Currently the support is unavailable][Optional]</label>
             <br />
             <input placeholder="Codeforces user id."></input>
           </div>
@@ -316,6 +318,7 @@ const Signup = (props) => {
             <input
               onChange={ccUnChangeHandler}
               placeholder="Codechef user id."
+              required
             ></input>
           </div>
           <button className="mt-3 mb-3" type="submit">

@@ -40,8 +40,8 @@ const Data = (props) => {
             </div>
             <h5 className="mt-4">
               <span>Recent Activities:</span>
-              {codechefData.recentActivities.map((activity) => (
-                <li>{activity}</li>
+              {codechefData.recentActivities.map((activity,i) => (
+                <li key={123*i}>{activity}</li>
               ))}
             </h5>
           </div>
@@ -56,6 +56,13 @@ const Data = (props) => {
           <div className="row">
             <div className="col-sm-6">
               <h5>
+                <span>Currently the support is unavailable! We are working on it.</span>
+              </h5>
+            </div>
+          </div> 
+          {/* <div className="row">
+            <div className="col-sm-6">
+              <h5>
                 <span>Name:</span> Aditya Sinha
               </h5>
             </div>
@@ -64,8 +71,8 @@ const Data = (props) => {
                 <span>User Name:</span> aditya@123
               </h5>
             </div>
-          </div>
-          <div className="row">
+          </div> */}
+          {/* <div className="row">
             <div className="col-sm-6">
               <h5>
                 <span>Profession:</span> Student
@@ -79,7 +86,7 @@ const Data = (props) => {
             <h5 className="mt-4">
               <span>Recent Activities:</span>{" "}
             </h5>
-          </div>
+          </div> */}
         </div>
         <div className="container data mt-4 pb-5">
           <div className="row">
@@ -88,7 +95,14 @@ const Data = (props) => {
             </div>
           </div>
           <div className="row">
+          <div className="row">
             <div className="col-sm-6">
+              <h5>
+                <span>Currently the support is unavailable! We are working on it.</span>
+              </h5>
+            </div>
+          </div> 
+            {/* <div className="col-sm-6">
               <h5>
                 <span>Name:</span> Aditya Sinha
               </h5>
@@ -97,8 +111,8 @@ const Data = (props) => {
               <h5>
                 <span>User Name:</span> aditya@123
               </h5>
-            </div>
-          </div>
+            </div> */}
+          {/* </div>
           <div className="row">
             <div className="col-sm-6">
               <h5>
@@ -112,7 +126,7 @@ const Data = (props) => {
             </div>
             <h5 className="mt-4">
               <span>Recent Activities:</span>{" "}
-            </h5>
+            </h5> */}
           </div>
         </div>
       </main>

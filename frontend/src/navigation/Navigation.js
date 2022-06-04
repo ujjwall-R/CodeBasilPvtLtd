@@ -2,6 +2,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../navigation/Navigation.css";
 
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 const Navigation = (props) => {
   const [following, setFollowing] = useState(false);
   const followingClickHandler = (event) => {
@@ -14,7 +15,7 @@ const Navigation = (props) => {
       <nav className="navbar fixed-top">
         <ul className="ms-auto me-auto">
           <li className="ms-3 me-3">
-            <a href="#">
+            <Link to="/" >
               <h4>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +29,10 @@ const Navigation = (props) => {
                 </svg>{" "}
                 Home{" "}
               </h4>
-            </a>
+            </Link>
           </li>
           <li className="ms-3 me-3 ">
-            <a href="#">
+            <Link to="/about">
               <h4>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +46,7 @@ const Navigation = (props) => {
                 </svg>{" "}
                 About us
               </h4>
-            </a>
+            </Link>
           </li>
           <li className="ms-3 me-3 d-xl-none">
             <a href="#" onClick={followingClickHandler}>

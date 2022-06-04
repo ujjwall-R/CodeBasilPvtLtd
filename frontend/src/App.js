@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import AuthContext from "./Auth-Context/Auth";
 import Login from "./Login/Login";
 import Signup from "./Sign-Up/Signup";
-import { loginAction, logoutAction, searchUserAction, signUpAction } from "./actions/userActions";
+import { loginAction, logoutAction, searchAllUserAction, searchUserAction, signUpAction } from "./actions/userActions";
 import Following from "./Following/Following";
 import Data from "./Data/Data";
 import { data } from "cheerio/lib/api/attributes";
@@ -79,9 +79,11 @@ function App() {
     }
   }, []);
 
-  const ccfDataLoader = (data) => {
+  const ccfDataLoader =async (data) => {
     setCodeChefData(data);
-    SetFlist(data.user.following);
+    const fData=await searchAllUserAction();
+    // console.log(fData);
+    SetFlist(fData);
   };
 
   const loginHandler = async (email, password) => {
@@ -104,7 +106,7 @@ function App() {
     // console.log(tkn);
 
     const dataLogOut = await logoutAction(tkn);
-    console.log(dataLogOut);
+    // console.log(dataLogOut);
     if (dataLogOut.message) {
       localStorage.removeItem("userInfo");
       localStorage.removeItem("isLoggedIn");
@@ -128,7 +130,7 @@ function App() {
       name,
       codechefId
     );
-    console.log(afterLoginData);
+    // console.log(afterLoginData);
     if (afterLoginData.user) {
       localStorage.setItem("userInfo", JSON.stringify(afterLoginData));
       setPersonalData(afterLoginData);
@@ -145,7 +147,7 @@ function App() {
   const displayData=async(emailOfFollowed)=>{
     setCodeChefData(loadingData2);
     const FuserData=await searchUserAction(emailOfFollowed);
-    console.log("here",FuserData);
+    // console.log("here",FuserData);
     setCodeChefData(FuserData);
   }
 

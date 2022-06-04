@@ -118,7 +118,7 @@ router.get("/users/me", auth, async (req, res) => {
 });
 
 //@description get/search user by email
-//@route GET /users/search
+//@route POST /users/search
 //@access Public
 router.post("/users/search", async (req, res) => {
   try {
@@ -126,7 +126,7 @@ router.post("/users/search", async (req, res) => {
     if (!user) {
       throw new Error("User not found!");
     }
-    console.log(user);
+    // console.log(user);
     const codechefData = await getRawData(user.codechefUsername);
     const userData = {
       user:{
@@ -146,6 +146,27 @@ router.post("/users/search", async (req, res) => {
   }
 });
 
+//@description get/search user by email
+//@route GET /users/searchAll
+//@access Public
+router.get("/users/searchAll", async (req, res) => {
+  try {
+    const users = await User.find({});
+    let emails=[];
+    users.forEach((user)=>{
+      emails.push([user.name,user.email]);
+    });
+    if (!users) {
+      throw new Error("Users not found!");
+    }
+    // console.log(emails);
+    res.send(emails);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
 //@description follow other user
 //@route POST /users/follow/:email
 //@access Private
@@ -153,7 +174,7 @@ router.post("/users/follow/:email", auth, async (req, res) => {
   try {
     const userToFollow = await User.findOne({ email: req.params.email });
     const user = req.user;
-    console.log("This", user);
+    // console.log("This", user);
     if (!userToFollow) {
       throw new Error("No such user exist!");
     }
@@ -165,6 +186,7 @@ router.post("/users/follow/:email", auth, async (req, res) => {
     const updatedUser = await user.save();
     res.json({ updatedUser });
   } catch (error) {
+    res.send(error);
     console.log(error);
   }
 });

@@ -8,7 +8,7 @@ export const signUpAction = async (email, password, name, codechefId) => {
       },
     };
 
-    console.log(email, password);
+    // console.log(email, password);
 
     const { data } = await axios.post(
       "http://localhost:5000/users",
@@ -115,15 +115,33 @@ export const searchUserAction = async (emailTBS) => {
       },
     };
     const jsonBody= { email: emailToBeSearched };
-    console.log(jsonBody);
-    console.log("hitting...");
+    // console.log(jsonBody);
+    // console.log("hitting...");
     const { data } = await axios.post(
       "http://localhost:5000/users/search",
       jsonBody
      ,
       config
     );
-    console.log("Hit");
+    // console.log("Hit");
+
+    if (!data) {
+      throw new Error("Error in Login");
+      return;
+    }
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const searchAllUserAction = async () => {
+  try {
+    // console.log("hitting...");
+    const { data } = await axios.get(
+      "http://localhost:5000/users/searchAll"
+    );
+    // console.log("Hit");
 
     if (!data) {
       throw new Error("Error in Login");

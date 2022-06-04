@@ -7,15 +7,23 @@ const Following = (props) => {
   const [followingIsClicked, setFollowingIsClicked] = useState(false);
   const [inputData, setInputData] = useState("");
   const [followArray, setfollowArray] = useState(["Loading..."]);
+  const [followEmails, setfollowEmails] = useState(["Loading..."]);
 
   useEffect(() => {
     setFollowingIsClicked(true);
-    setfollowArray(props.followingData);
+    let fNames=[];
+    let fEmails=[];
+    props.followingData.forEach((element,i )=> {
+      fNames[i]=element[0];
+      fEmails[i]=element[1];
+    });
+    setfollowArray(fNames);
+    setfollowEmails(fEmails);
   }, [props]);
 
   const FollowListOnClick=async (event)=>{
-    console.log(event.target.innerText);
-    props.displayDataChanger(event.target.innerText);
+    // console.log(event.target.getAttribute("value"));
+    props.displayDataChanger(event.target.getAttribute("value"));
   }
 
   
@@ -37,7 +45,7 @@ const Following = (props) => {
     <Fragment>
       <header id={followingIsClicked ? "Header2mob" : "Header2"}>
         <div className="cross mt-3 d-xl-none">
-          <a href="#" onClick={onCrossClickHandler}>
+          <a  onClick={onCrossClickHandler}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="35"
@@ -89,13 +97,15 @@ const Following = (props) => {
             </div>
           </div>
           <div className="following_names mt-3">
-            {followArray.map((data) => {
+            {followArray.map((data,i) => {
               return (
-                <div className="mb-2 mt-2">
-                  <a onClick={FollowListOnClick} href="#">
-                    <h5 >
+                <div key={i+1234} className="mb-2 mt-2" >
+                  <a value={followEmails[i]} onClick={FollowListOnClick} href="#">
+                    <h5 
+                    value={followEmails[i]}>
                       {" "}
-                      <svg
+                      <svg key={i+1}
+                      value={followEmails[i]}
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
                         height="20"
