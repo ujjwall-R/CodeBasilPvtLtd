@@ -4,8 +4,7 @@ import puppeteer from "puppeteer";
 const getRawData = async (un) => {
   const browser = await puppeteer.launch({
     args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
+      '--no-sandbox'
     ],
   });
   //done
