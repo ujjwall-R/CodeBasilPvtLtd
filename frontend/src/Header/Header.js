@@ -22,8 +22,8 @@ const Header = (props) => {
     localStorage.setItem("scrappedCodechefData", JSON.stringify(data));
 
     props.ccfDataLoader(data);
-
-    setCodeChefStar(data.codechefData.stars);
+    if(data.codechefData)
+      setCodeChefStar(data.codechefData.stars);
   }, [codeChefStar]);
 
   const changeStyle = () => {

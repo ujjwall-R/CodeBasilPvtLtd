@@ -1,7 +1,29 @@
 import React, { Fragment } from "react";
 import "./Data.css";
 const Data = (props) => {
-  const data = props.data;
+  const ErrData = {
+    user: {
+      name: "Error",
+      email: "Oops!Error from our side!",
+      codechefUsername: "Oops!Error from our side!",
+      following: ["Oops!Error from our side!"],
+    },
+    codechefData: {
+      username: "Oops!Error from our side!",
+      profession: "Oops!Error from our side!",
+      institution: "Oops!Error from our side!",
+      location: "Oops!Error from our side!",
+      stars: "Oops!Error from our side!",
+      recentActivities: ["Oops!Error from our side!"],
+    },
+  };
+  let data;
+  if(props.data.user){
+    data = props.data;
+  }
+  else{
+    data =ErrData;
+  }
 
   const codechefData = data.codechefData;
   // console.log(codechefData);
